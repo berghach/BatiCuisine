@@ -9,7 +9,8 @@ public class Client {
     private String phone;
     private boolean professional;
 
-    public Client(String name, String adresse, String phone, boolean professional){
+    public Client(int id,String name, String adresse, String phone, boolean professional){
+        this.id = id;
         this.name = name;
         this.adresse = adresse;
         this.phone = phone;
