@@ -12,17 +12,19 @@ public class Project {
     private double profitMargin;
     private double vatRate;
     private double totalPrice; //Project totalPrice is the price estimation off taxes and profit margin.
-    private ProjectStatus status = ProjectStatus.ONGOING;
+    private ProjectStatus status;
     private Client client; //Each Project is related to a Client
     private Estimate estimate; //Each Project has an Estimate
     private List<Component> components; //Each Project has a list of Component
 
-    public Project(String name, double kitchenSurface, double profitMargin, double vatRate, double totalPrice, Client client) {
+    public Project(int id, String name, double kitchenSurface, double profitMargin, double vatRate, double totalPrice, ProjectStatus status, Client client) {
+        this.id = id;
         this.name = name;
         this.kitchenSurface = kitchenSurface;
         this.profitMargin = profitMargin;
         this.vatRate = vatRate;
         this.totalPrice = totalPrice;
+        this.status = status;
         this.client = client;
         this.components = new ArrayList<>();
     }
