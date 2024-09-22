@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
   <diagram name="Class" id="Z4my6rKFRtbFITWfHtku">
-    <mxGraphModel dx="500" dy="296" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1036" dy="606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -166,7 +166,7 @@
             <mxRectangle x="620" y="900" width="90" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="cM2csizYm42cRUb4WDKY-33" value="- workforce_type: WorkforceType;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="cM2csizYm42cRUb4WDKY-32" vertex="1">
+        <mxCell id="cM2csizYm42cRUb4WDKY-33" value="- workforce_level: WorkforceLevel;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="cM2csizYm42cRUb4WDKY-32" vertex="1">
           <mxGeometry y="26" width="240" height="26" as="geometry" />
         </mxCell>
         <mxCell id="cM2csizYm42cRUb4WDKY-38" value="- hourly_rate: double;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="cM2csizYm42cRUb4WDKY-32" vertex="1">
@@ -199,7 +199,7 @@
         <mxCell id="cM2csizYm42cRUb4WDKY-43" value="skilled" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" parent="cM2csizYm42cRUb4WDKY-41" vertex="1">
           <mxGeometry y="70" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="cM2csizYm42cRUb4WDKY-68" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;endArrow=openThin;endFill=0;startArrow=openThin;startFill=0;endSize=18;startSize=18;" parent="1" source="cM2csizYm42cRUb4WDKY-44" target="cM2csizYm42cRUb4WDKY-1" edge="1">
+        <mxCell id="cM2csizYm42cRUb4WDKY-68" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;startArrow=openThin;startFill=0;endSize=18;startSize=18;" parent="1" source="cM2csizYm42cRUb4WDKY-44" target="cM2csizYm42cRUb4WDKY-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="cM2csizYm42cRUb4WDKY-70" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="cM2csizYm42cRUb4WDKY-68" vertex="1" connectable="0">
@@ -285,7 +285,7 @@
         <mxCell id="cM2csizYm42cRUb4WDKY-59" value="Estimete amount is the total project price with taxes and profit margin." style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=17;verticalAlign=top;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="360" y="121" width="200" height="59" as="geometry" />
         </mxCell>
-        <mxCell id="8MjLAeuCIEA6Y06_H98c-1" value="la relation Project-Client est définie d&#39;àprés user story 2." style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=9;verticalAlign=top;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="8MjLAeuCIEA6Y06_H98c-1" value="la relation Project-Client est définie d&#39;àprés user story 2." style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=9;verticalAlign=top;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="750" y="350" width="200" height="50" as="geometry" />
         </mxCell>
       </root>
