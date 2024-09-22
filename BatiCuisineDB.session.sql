@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS component(
     id SERIAL,
     name VARCHAR(30),
     component_type component_types,
+    vat_rate NUMERIC,
     project_id INT,
     CONSTRAINT pk_component PRIMARY KEY(id),
     CONSTRAINT fk_project FOREIGN KEY(project_id)
@@ -54,7 +55,6 @@ CREATE TABLE IF NOT EXISTS component(
 CREATE TABLE IF NOT EXISTS material(
     unit_price NUMERIC,
     quantity NUMERIC,
-    vat_rate NUMERIC,
     transport_price NUMERIC,
     quality_coefficient NUMERIC,
     CONSTRAINT pk_component_material PRIMARY KEY(id)

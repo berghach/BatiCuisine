@@ -9,8 +9,8 @@ public class Workforce extends Component{
     private double workHours;
     private double productivityCoefficient;
 
-    public Workforce(String name, ComponentType componentType, Project project, WorkforceLevel workforceLevel, double hourlyRate, double workHours, double productivityCoefficient) {
-        super(name, componentType, project);
+    public Workforce(String name, ComponentType componentType, double vatRate, Project project, WorkforceLevel workforceLevel, double hourlyRate, double workHours, double productivityCoefficient) {
+        super(name, componentType, vatRate, project);
         this.workforceLevel = workforceLevel;
         this.hourlyRate = hourlyRate;
         this.workHours = workHours;
@@ -40,6 +40,16 @@ public class Workforce extends Component{
     @Override
     public void setComponentType(ComponentType componentType) {
         super.setComponentType(componentType);
+    }
+
+    @Override
+    public double getVatRate() {
+        return super.getVatRate();
+    }
+
+    @Override
+    public void setVatRate(double vatRate) {
+        super.setVatRate(vatRate);
     }
 
     public WorkforceLevel getWorkforceLevel() {

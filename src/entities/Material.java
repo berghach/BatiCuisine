@@ -5,15 +5,13 @@ import enums.ComponentType;
 public class Material extends Component{
     private double unitPrice;
     private double quantity;
-    private double vatRate;
     private double transportPrice;
     private double qualityCoefficient;
 
-    public Material(String name, ComponentType componentType, Project project, double unitPrice, double quantity, double vatRate, double transportPrice, double qualityCoefficient) {
-        super(name, componentType, project);
+    public Material(String name, ComponentType componentType, double vatRate, Project project, double unitPrice, double quantity, double transportPrice, double qualityCoefficient) {
+        super(name, componentType, vatRate, project);
         this.unitPrice = unitPrice;
         this.quantity = quantity;
-        this.vatRate = vatRate;
         this.transportPrice = transportPrice;
         this.qualityCoefficient = qualityCoefficient;
     }
@@ -43,6 +41,16 @@ public class Material extends Component{
         super.setComponentType(componentType);
     }
 
+    @Override
+    public double getVatRate() {
+        return super.getVatRate();
+    }
+
+    @Override
+    public void setVatRate(double vatRate) {
+        super.setVatRate(vatRate);
+    }
+
     public double getUnitPrice() {
         return unitPrice;
     }
@@ -59,13 +67,6 @@ public class Material extends Component{
         this.quantity = quantity;
     }
 
-    public double getVatRate() {
-        return vatRate;
-    }
-
-    public void setVatRate(double vatRate) {
-        this.vatRate = vatRate;
-    }
 
     public double getTransportPrice() {
         return transportPrice;
