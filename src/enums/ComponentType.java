@@ -13,4 +13,13 @@ public enum ComponentType {
     public String getName() {
         return name;
     }
+
+    public static ComponentType fromString(String name) {
+        for (ComponentType status : ComponentType.values()) {
+            if (status.getName().equalsIgnoreCase(name)) {
+                return status;
+            }
+        }
+        throw new IllegalArgumentException("Unknown component type: " + name);
+    }
 }

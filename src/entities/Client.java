@@ -9,8 +9,7 @@ public class Client {
     private String phone;
     private boolean professional;
 
-    public Client(int id,String name, String adresse, String phone, boolean professional){
-        this.id = id;
+    public Client(String name, String adresse, String phone, boolean professional){
         this.name = name;
         this.adresse = adresse;
         this.phone = phone;
@@ -19,6 +18,10 @@ public class Client {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -51,5 +54,16 @@ public class Client {
 
     public void setProfessional(boolean professional) {
         this.professional = professional;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", phone='" + phone + '\'' +
+                ", professional='" + (professional ? "Professional" : "Ordinary") + '\'' +
+                '}';
     }
 }

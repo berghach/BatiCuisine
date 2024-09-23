@@ -22,6 +22,11 @@ public class Material extends Component{
     }
 
     @Override
+    public void setId(int id) {
+        super.setId(id);
+    }
+
+    @Override
     public String getName() {
         return super.getName();
     }
@@ -49,6 +54,16 @@ public class Material extends Component{
     @Override
     public void setVatRate(double vatRate) {
         super.setVatRate(vatRate);
+    }
+
+    @Override
+    public Project getProject() {
+        return super.getProject();
+    }
+
+    @Override
+    public void setProject(Project project) {
+        super.setProject(project);
     }
 
     public double getUnitPrice() {

@@ -15,10 +15,8 @@ public class Project {
     private ProjectStatus status;
     private Client client; //Each Project is related to a Client
     private Estimate estimate; //Each Project has an Estimate
-    private List<Component> components; //Each Project has a list of Component
 
-    public Project(int id, String name, double kitchenSurface, double profitMargin, double vatRate, double totalPrice, ProjectStatus status, Client client) {
-        this.id = id;
+    public Project(String name, double kitchenSurface, double profitMargin, double vatRate, double totalPrice, ProjectStatus status, Client client) {
         this.name = name;
         this.kitchenSurface = kitchenSurface;
         this.profitMargin = profitMargin;
@@ -26,11 +24,14 @@ public class Project {
         this.totalPrice = totalPrice;
         this.status = status;
         this.client = client;
-        this.components = new ArrayList<>();
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -93,7 +94,4 @@ public class Project {
         return estimate;
     }
 
-    public List<Component> getComponents() {
-        return components;
-    }
 }
