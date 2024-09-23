@@ -8,17 +8,21 @@ public class Estimate {
     private Date issueDate;
     private Date validateDate;
     private boolean accepted = false;
-    private Project project;
+    private int projectId;
 
-    public Estimate(double amount, Date issueDate, Date validateDate, Project project) {
+    public Estimate(double amount, Date issueDate, Date validateDate, int projectId) {
         this.amount = amount;
         this.issueDate = issueDate;
         this.validateDate = validateDate;
-        this.project = project;
+        this.projectId = projectId;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getAmount() {
@@ -53,4 +57,11 @@ public class Estimate {
         this.accepted = accepted;
     }
 
+    public int getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
+    }
 }

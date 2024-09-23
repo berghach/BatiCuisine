@@ -1,6 +1,7 @@
 package dao;
 
 import entities.Client;
+import entities.Estimate;
 import entities.Project;
 import enums.ProjectStatus;
 
@@ -21,27 +22,23 @@ public class ProjectDAO implements DAO<Project>{
 
     @Override
     public Optional<Project> get(long id) {
-        String query = "SELECT p.id AS project_id, p.name AS project_name, p.kitchen_surface, p.profit_margin, " +
-                "p.vat_rate, p.total_price, p.project_stat, c.id AS client_id, c.name AS client_name, " +
-                "c.adresse, c.phone, c.is_professional " +
-                "FROM project p JOIN client c ON p.client_id = c.id WHERE p.id = ?";
+        String query = "SELECT * FROM project WHERE id = ?";
+        ClientDAO clientDAO = new ClientDAO(connection);
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setLong(1, id);
 
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                Client client = new Client(
-                        rs.getInt("client_id"),
-                        rs.getString("client_name"),
-                        rs.getString("adresse"),
-                        rs.getString("phone"),
-                        rs.getBoolean("is_professional")
-                );
+                // get the related client
+                Optional<Client> optionalClient = clientDAO.get(rs.getInt("client_id"));
+                Client client = null;
+                if (optionalClient.isPresent()) {
+                    client = optionalClient.get();
+                }
 
                 Project project = new Project(
-                        rs.getInt("project_id"),
-                        rs.getString("project_name"),
+                        rs.getString("name"),
                         rs.getDouble("kitchen_surface"),
                         rs.getDouble("profit_margin"),
                         rs.getDouble("vat_rate"),
@@ -49,8 +46,7 @@ public class ProjectDAO implements DAO<Project>{
                         ProjectStatus.fromString(rs.getString("project_stat")),
                         client
                 );
-
-                project.setStatus(ProjectStatus.valueOf(rs.getString("project_stat")));
+                project.setId(rs.getInt("id"));
 
                 return Optional.of(project);
             }
@@ -62,27 +58,22 @@ public class ProjectDAO implements DAO<Project>{
 
     @Override
     public List<Project> getAll() {
-        String query = "SELECT p.id AS project_id, p.name AS project_name, p.kitchen_surface, p.profit_margin, " +
-                "p.vat_rate, p.total_price, p.project_stat, c.id AS client_id, c.name AS client_name, " +
-                "c.adresse, c.phone, c.is_professional " +
-                "FROM project p JOIN client c ON p.client_id = c.id";
-
+        String query = "SELECT * FROM project";
+        ClientDAO clientDAO = new ClientDAO(connection);
         List<Project> projects = new ArrayList<>();
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
-                Client client = new Client(
-                        rs.getInt("client_id"),
-                        rs.getString("client_name"),
-                        rs.getString("adresse"),
-                        rs.getString("phone"),
-                        rs.getBoolean("is_professional")
-                );
+                // get the related client
+                Optional<Client> optionalClient = clientDAO.get(rs.getInt("client_id"));
+                Client client = null;
+                if (optionalClient.isPresent()) {
+                    client = optionalClient.get();
+                }
 
                 Project project = new Project(
-                        rs.getInt("project_id"),
                         rs.getString("project_name"),
                         rs.getDouble("kitchen_surface"),
                         rs.getDouble("profit_margin"),
@@ -91,8 +82,7 @@ public class ProjectDAO implements DAO<Project>{
                         ProjectStatus.fromString(rs.getString("project_stat")),
                         client
                 );
-
-                project.setStatus(ProjectStatus.valueOf(rs.getString("project_stat")));
+                project.setId(rs.getInt("project_id"));
 
                 projects.add(project);
             }
@@ -102,6 +92,8 @@ public class ProjectDAO implements DAO<Project>{
             throw new RuntimeException(e);
         }
     }
+
+
 
     @Override
     public boolean save(Project project) {

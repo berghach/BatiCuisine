@@ -17,7 +17,7 @@ public class ClientDAO implements DAO<Client>{
         this.connection = connection;
     }
 
-    public Optional<Client> get(String name){
+    public Optional<Client> getByName(String name){
 
         String query = "SELECT * FROM client WHERE name = ?";
 
@@ -29,12 +29,13 @@ public class ClientDAO implements DAO<Client>{
 
             if(rs.next()){
                 Client client = new Client(
-                        rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("adresse"),
                         rs.getString("phone"),
                         rs.getBoolean("is_professional")
                 );
+                client.setId(rs.getInt("id"));
+
                 return Optional.of(client);
             }
 
@@ -46,7 +47,7 @@ public class ClientDAO implements DAO<Client>{
     }
     @Override
     public Optional<Client> get(long id) {
-        String query = "SELECT * FROM client WHERE name = ?";
+        String query = "SELECT * FROM client WHERE id = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
 
@@ -56,12 +57,13 @@ public class ClientDAO implements DAO<Client>{
 
             if(rs.next()){
                 Client client = new Client(
-                        rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("adresse"),
                         rs.getString("phone"),
                         rs.getBoolean("is_professional")
                 );
+                client.setId(rs.getInt("id"));
+
                 return Optional.of(client);
             }
 
@@ -82,13 +84,13 @@ public class ClientDAO implements DAO<Client>{
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
                 Client client = new Client(
-                        rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("adresse"),
                         rs.getString("phone"),
                         rs.getBoolean("is_professional")
                 );
-                
+                client.setId(rs.getInt("id"));
+
                 clients.add(client);
             }
 
