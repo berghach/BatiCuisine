@@ -46,7 +46,7 @@ public class ProjectDAO implements DAO<Project>{
                         rs.getDouble("profit_margin"),
                         rs.getDouble("vat_rate"),
                         rs.getDouble("total_price"),
-                        ProjectStatus(rs.getString("project_stat")),
+                        ProjectStatus.fromString(rs.getString("project_stat")),
                         client
                 );
 
@@ -88,6 +88,7 @@ public class ProjectDAO implements DAO<Project>{
                         rs.getDouble("profit_margin"),
                         rs.getDouble("vat_rate"),
                         rs.getDouble("total_price"),
+                        ProjectStatus.fromString(rs.getString("project_stat")),
                         client
                 );
 

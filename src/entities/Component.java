@@ -7,7 +7,7 @@ public class Component {
     private String name;
     private ComponentType componentType;
     private double vatRate;
-    private Project project;
+    private Project project; //Component has no access to project, so no need for setter nor getter
 
     public Component(String name, ComponentType componentType, double vatRate, Project project) {
         this.name = name;
