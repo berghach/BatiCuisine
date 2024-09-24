@@ -1,8 +1,8 @@
 package enums;
 
 public enum WorkforceLevel {
-    BASIC("basique"),
-    SKILLED("spécialisé");
+    BASIC("basic"),
+    SKILLED("skilled");
 
     private final String name;
 

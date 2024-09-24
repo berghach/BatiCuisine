@@ -22,20 +22,19 @@ public class MaterialDAO implements DAO<Material>{
     @Override
     public Optional<Material> get(long id) {
         String query = "SELECT * FROM material WHERE id = ?";
-        ProjectDAO projectDAO = new ProjectDAO(connection);
+
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setLong(1, id);
 
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                Project project = projectDAO.get(rs.getInt("project_id")).orElse(null);
 
                 Material material = new Material(
                         rs.getString("name"),
                         ComponentType.valueOf(rs.getString("component_type").toUpperCase()),
                         rs.getDouble("vat_rate"),
-                        project,
+                        rs.getInt("project_id"),
                         rs.getDouble("unit_price"),
                         rs.getDouble("quantity"),
                         rs.getDouble("transport_price"),
@@ -54,19 +53,17 @@ public class MaterialDAO implements DAO<Material>{
     @Override
     public List<Material> getAll() {
         String query = "SELECT * FROM material";
-        ProjectDAO projectDAO = new ProjectDAO(connection);
 
         List<Material> materials = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                Project project = projectDAO.get(rs.getInt("project_id")).orElse(null);
 
                 Material material = new Material(
                         rs.getString("name"),
                         ComponentType.fromString(rs.getString("component_type")),
                         rs.getDouble("vat_rate"),
-                        project,
+                        rs.getInt("project_id"),
                         rs.getDouble("unit_price"),
                         rs.getDouble("quantity"),
                         rs.getDouble("transport_price"),
@@ -91,7 +88,7 @@ public class MaterialDAO implements DAO<Material>{
             statement.setString(1, material.getName());
             statement.setString(2, material.getComponentType().toString()); 
             statement.setDouble(3, material.getVatRate());
-            statement.setInt(4, material.getProject().getId());
+            statement.setInt(4, material.getProjectId());
             statement.setDouble(5, material.getUnitPrice());
             statement.setDouble(6, material.getQuantity());
             statement.setDouble(7, material.getTransportPrice());
@@ -115,7 +112,7 @@ public class MaterialDAO implements DAO<Material>{
             statement.setString(1, material.getName());
             statement.setString(2, material.getComponentType().getName()); 
             statement.setDouble(3, material.getVatRate());
-            statement.setInt(4, material.getProject().getId());
+            statement.setInt(4, material.getProjectId());
             statement.setDouble(5, material.getUnitPrice());
             statement.setDouble(6, material.getQuantity());
             statement.setDouble(7, material.getTransportPrice());

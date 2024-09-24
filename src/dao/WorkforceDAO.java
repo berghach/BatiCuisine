@@ -33,7 +33,7 @@ public class WorkforceDAO implements DAO<Workforce>{
                         rs.getString("name"),
                         ComponentType.valueOf(rs.getString("component_type").toUpperCase()),
                         rs.getDouble("vat_rate"),
-                        new ProjectDAO(connection).get(rs.getLong("project_id")).orElse(null), // Assuming ProjectDAO handles project fetching
+                        rs.getInt("project_id"),
                         WorkforceLevel.valueOf(rs.getString("workforce_level").toUpperCase()),
                         rs.getDouble("hourly_rate"),
                         rs.getDouble("work_hours"),
@@ -61,7 +61,7 @@ public class WorkforceDAO implements DAO<Workforce>{
                         rs.getString("name"),
                         ComponentType.valueOf(rs.getString("component_type").toUpperCase()),
                         rs.getDouble("vat_rate"),
-                        new ProjectDAO(connection).get(rs.getLong("project_id")).orElse(null), // Assuming ProjectDAO handles project fetching
+                        rs.getInt("project_id"), // Assuming ProjectDAO handles project fetching
                         WorkforceLevel.valueOf(rs.getString("workforce_level").toUpperCase()),
                         rs.getDouble("hourly_rate"),
                         rs.getDouble("work_hours"),
@@ -87,7 +87,7 @@ public class WorkforceDAO implements DAO<Workforce>{
             statement.setString(1, workforce.getName());
             statement.setString(2, workforce.getComponentType().name().toLowerCase());
             statement.setDouble(3, workforce.getVatRate());
-            statement.setInt(4, workforce.getProject().getId());
+            statement.setInt(4, workforce.getProjectId());
             statement.setString(5, workforce.getWorkforceLevel().name().toLowerCase());
             statement.setDouble(6, workforce.getHourlyRate());
             statement.setDouble(7, workforce.getWorkHours());
@@ -110,7 +110,7 @@ public class WorkforceDAO implements DAO<Workforce>{
             statement.setString(1, workforce.getName());
             statement.setString(2, workforce.getComponentType().name().toLowerCase());
             statement.setDouble(3, workforce.getVatRate());
-            statement.setInt(4, workforce.getProject().getId());
+            statement.setInt(4, workforce.getProjectId());
             statement.setString(5, workforce.getWorkforceLevel().name().toLowerCase());
             statement.setDouble(6, workforce.getHourlyRate());
             statement.setDouble(7, workforce.getWorkHours());
