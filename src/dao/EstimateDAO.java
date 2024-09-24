@@ -18,6 +18,30 @@ public class EstimateDAO implements DAO<Estimate>{
         this.connection = connection;
     }
 
+    public Optional<Estimate> getProjectEstimate(int projectId){
+        String query = "SELECT * FROM estimate WHERE project_id = ?";
+
+        try(PreparedStatement statement = connection.prepareStatement(query)){
+            statement.setLong(1, projectId);
+
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                Estimate estimate = new Estimate(
+                        rs.getDouble("amount"),
+                        rs.getDate("issue_date"),
+                        rs.getDate("validate_date"),
+                        rs.getInt("project_id")
+                );
+                estimate.setId(rs.getInt("id"));
+                estimate.setAccepted(rs.getBoolean("is_accepted"));
+                return Optional.of(estimate);
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+
+        return Optional.empty();
+    }
     @Override
     public Optional<Estimate> get(long id) {
         String query = "SELECT * FROM estimate WHERE id = ?";
@@ -34,6 +58,7 @@ public class EstimateDAO implements DAO<Estimate>{
                         rs.getDate("validate_date"),
                         rs.getInt("project_id")
                 );
+                estimate.setId(rs.getInt("id"));
                 estimate.setAccepted(rs.getBoolean("is_accepted"));
                 return Optional.of(estimate);
             }
@@ -59,6 +84,7 @@ public class EstimateDAO implements DAO<Estimate>{
                         rs.getDate("validate_date"),
                         rs.getInt("project_id")
                 );
+                estimate.setId(rs.getInt("id"));
                 estimate.setAccepted(rs.getBoolean("is_accepted"));
                 estimates.add(estimate);
             }
