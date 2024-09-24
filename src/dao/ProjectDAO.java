@@ -89,7 +89,7 @@ public class ProjectDAO implements DAO<Project>{
                 }
 
                 Project project = new Project(
-                        rs.getString("project_name"),
+                        rs.getString("name"),
                         rs.getDouble("kitchen_surface"),
                         rs.getDouble("profit_margin"),
                         rs.getDouble("vat_rate"),
@@ -97,7 +97,7 @@ public class ProjectDAO implements DAO<Project>{
                         ProjectStatus.fromString(rs.getString("project_stat")),
                         client
                 );
-                project.setId(rs.getInt("project_id"));
+                project.setId(rs.getInt("id"));
                 project.setEstimate(estimate);
 
                 projects.add(project);

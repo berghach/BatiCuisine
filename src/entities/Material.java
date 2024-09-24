@@ -8,8 +8,8 @@ public class Material extends Component{
     private double transportPrice;
     private double qualityCoefficient;
 
-    public Material(String name, ComponentType componentType, double vatRate, Project project, double unitPrice, double quantity, double transportPrice, double qualityCoefficient) {
-        super(name, componentType, vatRate, project);
+    public Material(String name, ComponentType componentType, double vatRate, int projectId, double unitPrice, double quantity, double transportPrice, double qualityCoefficient) {
+        super(name, componentType, vatRate, projectId);
         this.unitPrice = unitPrice;
         this.quantity = quantity;
         this.transportPrice = transportPrice;
@@ -57,13 +57,13 @@ public class Material extends Component{
     }
 
     @Override
-    public Project getProject() {
-        return super.getProject();
+    public int getProjectId() {
+        return super.getProjectId();
     }
 
     @Override
-    public void setProject(Project project) {
-        super.setProject(project);
+    public void setProjectId(int projectId) {
+        super.setProjectId(projectId);
     }
 
     public double getUnitPrice() {

@@ -97,4 +97,16 @@ public class Project {
     public void setEstimate(Estimate estimate) {
         this.estimate = estimate;
     }
+
+    @Override
+    public String toString() {
+        return "Projet: ID "+id+"{\n" +
+                "\tTitre= '" + name + "'\n" +
+                "\tSurface de cuisine= " + kitchenSurface + "\n" +
+                "\tMarge bénificiaire= " + profitMargin + "\n" +
+                "\tTVA= " + vatRate + "\n" +
+                "\tPrix total= " + totalPrice + "\n" +
+                "\tEtat= " + status.getName() + "\n" +
+                '}';
+    }
 }
