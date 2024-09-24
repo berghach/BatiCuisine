@@ -94,4 +94,7 @@ public class Project {
         return estimate;
     }
 
+    public void setEstimate(Estimate estimate) {
+        this.estimate = estimate;
+    }
 }

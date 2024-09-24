@@ -7,13 +7,13 @@ public class Component {
     private String name;
     private ComponentType componentType;
     private double vatRate;
-    private Project project;
+    private int projectId;
 
-    public Component(String name, ComponentType componentType, double vatRate, Project project) {
+    public Component(String name, ComponentType componentType, double vatRate, int projectId) {
         this.name = name;
         this.componentType = componentType;
         this.vatRate = vatRate;
-        this.project = project;
+        this.projectId = projectId;
     }
 
     public int getId() {
@@ -48,11 +48,11 @@ public class Component {
         this.vatRate = vatRate;
     }
 
-    public Project getProject() {
-        return project;
+    public int getProjectId() {
+        return projectId;
     }
 
-    public void setProject(Project project) {
-        this.project = project;
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 }

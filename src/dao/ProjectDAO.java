@@ -24,6 +24,7 @@ public class ProjectDAO implements DAO<Project>{
     public Optional<Project> get(long id) {
         String query = "SELECT * FROM project WHERE id = ?";
         ClientDAO clientDAO = new ClientDAO(connection);
+        EstimateDAO estimateDAO = new EstimateDAO(connection);
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setLong(1, id);
@@ -36,6 +37,12 @@ public class ProjectDAO implements DAO<Project>{
                 if (optionalClient.isPresent()) {
                     client = optionalClient.get();
                 }
+                // get the related project
+                Optional<Estimate> optionalEstimate = estimateDAO.getProjectEstimate(rs.getInt("id"));
+                Estimate estimate = null;
+                if(optionalEstimate.isPresent()){
+                    estimate = optionalEstimate.get();
+                }
 
                 Project project = new Project(
                         rs.getString("name"),
@@ -47,6 +54,7 @@ public class ProjectDAO implements DAO<Project>{
                         client
                 );
                 project.setId(rs.getInt("id"));
+                project.setEstimate(estimate);
 
                 return Optional.of(project);
             }
@@ -60,6 +68,7 @@ public class ProjectDAO implements DAO<Project>{
     public List<Project> getAll() {
         String query = "SELECT * FROM project";
         ClientDAO clientDAO = new ClientDAO(connection);
+        EstimateDAO estimateDAO = new EstimateDAO(connection);
         List<Project> projects = new ArrayList<>();
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
@@ -72,6 +81,12 @@ public class ProjectDAO implements DAO<Project>{
                 if (optionalClient.isPresent()) {
                     client = optionalClient.get();
                 }
+                // get the related project
+                Optional<Estimate> optionalEstimate = estimateDAO.getProjectEstimate(rs.getInt("id"));
+                Estimate estimate = null;
+                if(optionalEstimate.isPresent()){
+                    estimate = optionalEstimate.get();
+                }
 
                 Project project = new Project(
                         rs.getString("project_name"),
@@ -83,6 +98,7 @@ public class ProjectDAO implements DAO<Project>{
                         client
                 );
                 project.setId(rs.getInt("project_id"));
+                project.setEstimate(estimate);
 
                 projects.add(project);
             }
